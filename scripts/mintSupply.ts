@@ -2,7 +2,7 @@
  * Demonstrates how to create new SPL tokens (aka "minting tokens") into an existing SPL Token Mint
  */
 
-// import custom helpers for demos
+
 import { connection } from "../lib/vars";
 import { explorerURL, getAdminAccount, loadPublicKeysFromFile } from "../lib/helpers";
 
