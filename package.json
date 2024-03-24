@@ -22,6 +22,12 @@
     "@solana/web3.js": "^1.73.3",
     "dotenv": "^16.0.3"
   },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
   "devDependencies": {
     "eslint": "^8.57.0",
     "husky": "^8.0.3",
