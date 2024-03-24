@@ -11,3 +11,6 @@ if ! [[ "$MESSAGE" =~ $pattern ]]; then
     echo "Commit messages must start with 'feat:','fix:','docs:','style','refactor:', 'test:', or 'bugfix:' followed by a space and a message."
     exit 1
 fi
+
+echo "Running lint-staged"
+npx lint-staged
