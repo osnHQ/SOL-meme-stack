@@ -1,4 +1,5 @@
-## SOLANA-SPL-TOKEN
+## SOLANA-SPL-TOKEN  
+This open-source repository provides a comprehensive toolkit for building decentralized meme applications on the Solana blockchain. It empowers developers with essential functionalities to create, manage, and interact with meme-related tokens (NFTs) on Solana. 
 
 ## Setup locally
 
