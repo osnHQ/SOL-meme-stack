@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+echo "Running git pre-commit hook"
+
+EXCLUDED_BRANCH="dev"
+
+BRANCH_NAME=$(git symbolic-ref --short HEAD 2>/dev/null)
+
+EXPECTED_PATTERN="^(feature|bugfix|hotfix|refactor|docs|setup)/.*"
+
+if [ "$BRANCH_NAME" = "$EXCLUDED_BRANCH" ]; then
+    echo "Skipping pre-commit hook on branch: $EXCLUDED_BRANCH"
+    exit 0 # Exit without performing any actions
+fi
+
+if ! [[ $BRANCH_NAME =~ $EXPECTED_PATTERN ]]; then
+    echo "Error: Invalid branch name. Branch names must match the pattern: $EXPECTED_PATTERN"
+    exit 1
+fi
+
+echo "Running lint-staged"
+npx lint-staged

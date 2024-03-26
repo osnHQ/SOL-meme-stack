@@ -1,0 +1,16 @@
+#!/bin/bash
+echo "Running git commit-msg hook"
+
+MESSAGE=$(cat $1)
+
+# Define the pattern for the commit message (modify as needed)
+pattern="^(feat|fix|docs|style|refactor|test|bugfix|setup|installation):(.*)$"
+
+if ! [[ "$MESSAGE" =~ $pattern ]]; then
+    echo "Error: Commit message does not match the required pattern."
+    echo "Commit messages must start with 'feat:','fix:','docs:','style','refactor:', 'test:', or 'bugfix:' followed by a space and a message."
+    exit 1
+fi
+
+echo "Running lint-staged"
+npx lint-staged
