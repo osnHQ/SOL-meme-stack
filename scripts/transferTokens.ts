@@ -1,9 +1,10 @@
 //** NOTE: THIS SCRIPT HELPS TO TRANSFER SOLANA SPL TOKEN FROM ONE ACCOUNT TO ANOTHER */
 
-const { Connection, PublicKey, Keypair } = require('@solana/web3.js');
+const { PublicKey } = require('@solana/web3.js');
 const { getOrCreateAssociatedTokenAccount, transfer } = require('@solana/spl-token');
 import {connection} from '../lib/vars';
-import { getAdminAccount,loadPublicKeysFromFile } from '../lib/helpers';
+import { getAdminAccount,loadPublicKeysFromFile,explorerURL } from '../lib/helpers';
+
 
 
 
@@ -18,7 +19,7 @@ import { getAdminAccount,loadPublicKeysFromFile } from '../lib/helpers';
 // Replace these with your actual values
 const DESTINATION_WALLET = '4tEfs9QjdCiZBEuZfSbshnYQZzenDpYP4GzrSiKHjiqJ';
 const MINT_ADDRESS = new PublicKey(localKeys.tokenMint); // Replace with your token's mint address
-const TRANSFER_AMOUNT = 26666666.64; // Amount of tokens to transfer
+const TRANSFER_AMOUNT = 26666666640; // Amount of tokens to transfer
 
 // Initialize connection
 
@@ -36,7 +37,7 @@ const mintAddress = new PublicKey(MINT_ADDRESS);
 
 (async () => {
     try {
-        // Get or create associated token accounts for sender and receiver
+    //     Get or create associated token accounts for sender and receiver
         const senderTokenAccount = await getOrCreateAssociatedTokenAccount(
             connection,
             adminAccount,
@@ -58,10 +59,10 @@ const mintAddress = new PublicKey(MINT_ADDRESS);
             senderTokenAccount.address,
             receiverTokenAccount.address,
             adminAccount.publicKey,
-            TRANSFER_AMOUNT * 1000000 // Adjust for token decimals
+            TRANSFER_AMOUNT // Adjust for token decimals
         );
 
-        console.log(`Transfer successful. Signature: ${transferSignature}`);
+        console.log(`Transfer successful. Signature: ${explorerURL({txSignature:transferSignature})}`);
     } catch (error) {
         console.error("Error transferring tokens:", error);
     }
