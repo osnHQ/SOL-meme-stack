@@ -1,3 +1,5 @@
 .env
 .local_keys
 /node_modules
+./balance-validator/.env
+./balance-validator/sheet.csv

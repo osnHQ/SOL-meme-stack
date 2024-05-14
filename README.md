@@ -45,3 +45,8 @@ This script helps to transfer specified amount of tokens to target address passe
 #### `updateTokenMetadata.ts`
 
 This [updateTokenMetadata](./scripts/updateTokenMetadata.ts) script helps to update metadata of token if we need to rectify anything.
+
+#### `balance-validator.py`
+
+This [balance-validator](./balance-validator/balance-validator.py) script helps spl-token community admins to implement various gamifications with token holders
+inititaly this script provides a filtering mechanism based on wallet address token holding balance but can be expanded to other features.
